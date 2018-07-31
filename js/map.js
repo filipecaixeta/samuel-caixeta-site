@@ -17,8 +17,8 @@ $("#map-canvas").gmap3({
         action: "init",
         marker: {
             values: [ {
-                latLng: [ 40.7143528, -74.0059731 ],
-                data: "Our office  - New York City",
+                latLng: [ -16.718216, -49.225187 ],
+                data: "",
                 options: {
                     icon: "images/marker.png"
                 }
@@ -57,7 +57,7 @@ $("#map-canvas").gmap3({
         },
         map: {
             options: {
-                zoom: 14,
+                zoom: 16,
                 zoomControl: true,
                 mapTypeControl: true,
                 scaleControl: true,

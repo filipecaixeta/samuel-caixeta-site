@@ -49,6 +49,9 @@ body{
 	color:#000;
 	font-family: 'Ek Mukta', sans-serif;
 }
+.image-popup {
+	cursor: pointer;
+}
 .hidhtml {
 	overflow:hidden;
 }
@@ -2738,7 +2741,7 @@ header.main-header , footer.fixed-footer, footer.scroll-footer {
 }
 .column-filter .gallery-filters a {
 	float:left;
-	width:auto;
+	width:100%;
 	padding:10px 14px 10px 0;
 }
 .column-wrap {

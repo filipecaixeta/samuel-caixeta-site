@@ -25,7 +25,7 @@ function initInshot() {
         $(".alt").each(function () {
             $(this).css({
                 "top": "50%",
-                "margin-top": -$(this).height() / 2 + "px"
+                // "margin-top": -$(this).height() / 2 + "px"
             });
         });
     }
@@ -592,9 +592,9 @@ function createAlbum() {
         div.setAttribute("class","gallery-item "+ category);
         div.innerHTML = ''+
             '<div class="grid-item-holder">'+
-            '    <img  src="images/'+category+'_thumb/'+img+'" alt="">'+
-            '    <a data-src="images/'+category+'/'+img+'" class="single-popup-image slider-zoom">'+
-            '    <i class="fa fa-search"></i>'+
+            // '    <a data-src="images/'+category+'/'+img+'" class="single-popup-image slider-zoom">'+
+            '    <img  src="images/'+category+'_thumb/'+img+'" data-src="images/'+category+'/'+img+'" class="image-popup" alt="">'+
+            // '    <i class="fa fa-search"></i>'+
             '    </a>'+
             '</div>';
         document.getElementById("gallery").appendChild(div);
@@ -616,6 +616,12 @@ function createAlbum() {
     images = Shuffle(images);
     for(var i in images) {
         createImage(images[i][0],images[i][1]);
+        if ($(".gallery-items").length) {
+            var a = $(".gallery-items")
+            a.imagesLoaded(function () {
+                a.isotope("layout");
+            });
+        }
     }
 }
 

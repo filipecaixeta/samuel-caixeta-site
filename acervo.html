@@ -15,6 +15,24 @@
         <link type="text/css" rel="stylesheet" href="css/yourstyle.css">
         <!--=============== favicons ===============-->
         <link rel="shortcut icon" href="images/favicon.ico">
+        <style>
+        .gallery {
+            position: relative;
+        }
+        .gallery-img {
+            position: absolute;
+            border: 0px solid black;
+            display: block;
+        }
+        .bg-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-size: cover;
+        }
+    </style>
     </head>
     <body>
         <!-- loader -->
@@ -80,8 +98,10 @@
                     </div>
                     <!--  filter end --> 
                     <!--  gallery-items -->
-                    <div id="gallery" class="gallery-items hid-det-items">                          
+                    <div class="gallery gallery-items hid-det-items">
                     </div>
+                    <!-- <div id="gallery" class="gallery-items hid-det-items">                          
+                    </div> -->
                 </div>
                 <!-- content  end -->  
             </div>
@@ -186,7 +206,185 @@
         <script type="text/javascript" src="js/scripts.js"></script>
         <script>
             $(function () {
-                createAlbum();
+                // createAlbum();
+
+                var images = [
+                'images/esculturas_de_parede/94=w1440-h1080.jpg',
+                'images/esculturas_de_parede/91=w1440-h1080.jpg',
+                'images/esculturas_de_parede/90=w1080-h1440.jpg',
+                'images/esculturas_coloridas/210=w720-h1080.jpg',
+                'images/esculturas_coloridas/4=w1080-h1920.jpg',
+                'images/esculturas_coloridas/25=w1080-h1920.jpg',
+                'images/esculturas_coloridas/56=w1080-h1080.jpg',
+                'images/esculturas_coloridas/100=w1080-h1440.jpg',
+                'images/esculturas_coloridas/6=w1080-h1920.jpg',
+                'images/esculturas_coloridas/95=w810-h1080.jpg',
+                'images/esculturas_coloridas/70=w807-h1080.jpg',
+                'images/esculturas_coloridas/145=w1080-h1080.jpg',
+                'images/esculturas_coloridas/14=w608-h1080.jpg',
+                'images/esculturas_coloridas/27=w1080-h1920.jpg',
+                'images/esculturas_coloridas/169=w720-h1080.jpg',
+                'images/esculturas_coloridas/157=w720-h1080.jpg',
+                'images/esculturas_coloridas/167=w720-h1080.jpg',
+                'images/esculturas_coloridas/123=w450-h1080.jpg',
+                'images/esculturas_coloridas/15=w1080-h1920.jpg',
+                'images/esculturas_coloridas/83=w536-h1080.jpg',
+                'images/esculturas_coloridas/168=w720-h1080.jpg',
+                'images/home/4=w564-h846.jpg',
+                'images/home/2=w550-h734.jpg',
+                'images/home/1=w564-h848.jpg',
+                'images/home/3=w954-h1024.jpg',
+                'images/bg_paisagem/10=w1821-h1080.jpg',
+                'images/bg_paisagem/94=w1440-h1080.jpg',
+                'images/bg_paisagem/19=w1920-h932.jpg',
+                'images/bg_paisagem/136=w1920-h931.jpg',
+                'images/bg_paisagem/107=w1920-h969.jpg',
+                'images/atelie/316=w1668-h2968.jpg',
+                'images/atelie/318=w3092-h3029.jpg',
+                'images/atelie/313=w2968-h1668.jpg',
+                'images/atelie/312=w2988-h5312.jpg',
+                'images/atelie/315=w3264-h2448.jpg',
+                'images/atelie/314=w3264-h2448.jpg',
+                'images/atelie/317=w960-h1280.jpg',
+                'images/atelie/122=w864-h1080.jpg',
+                'images/esculturas_aco_corten_ferrugem/164=w720-h1080.jpg',
+                'images/esculturas_aco_corten_ferrugem/82=w439-h1080.jpg',
+                'images/esculturas_aco_corten_ferrugem/104=w763-h1080.jpg',
+                'images/esculturas_aco_corten_ferrugem/97=w810-h1080.jpg',
+                'images/esculturas_aco_corten_ferrugem/134=w810-h1080.jpg',
+                'images/esculturas_aco_corten_ferrugem/162=w720-h1080.jpg',
+                'images/esculturas_aco_corten_ferrugem/122=w864-h1080.jpg',
+                'images/abstratos_geometricos/10=w1821-h1080.jpg',
+                'images/abstratos_geometricos/203=w1789-h1080.jpg',
+                'images/abstratos_geometricos/130=w1920-h1004.jpg',
+                'images/abstratos_geometricos/205=w989-h1080.jpg',
+                'images/abstratos_geometricos/20=w1920-h1010.jpg',
+                'images/abstratos_geometricos/119=w1920-h943.jpg',
+                'images/abstratos_geometricos/55=w1609-h1080.jpg',
+                'images/abstratos_geometricos/77=w1920-h963.jpg',
+                'images/abstratos_geometricos/202=w1674-h1080.jpg',
+                'images/abstratos_geometricos/302=w960-h640.jpg',
+                'images/abstratos_geometricos/59=w1687-h1080.jpg',
+                'images/abstratos_geometricos/138=w1070-h1080.jpg',
+                'images/abstratos_geometricos/73=w819-h1080.jpg',
+                'images/abstratos_geometricos/72=w1920-h951.jpg',
+                'images/abstratos_geometricos/131=w1057-h1080.jpg',
+                'images/abstratos_geometricos/125=w1920-h1069.jpg',
+                'images/abstratos_geometricos/19=w1920-h932.jpg',
+                'images/abstratos_geometricos/66=w1920-h922.jpg',
+                'images/abstratos_geometricos/120=w743-h1080.jpg',
+                'images/abstratos_geometricos/301=w2276-h2051.jpg',
+                'images/abstratos_geometricos/78=w856-h1080.jpg',
+                'images/abstratos_geometricos/300=w2271-h2050.jpg',
+                'images/abstratos_geometricos/206=w1920-h937.jpg',
+                'images/abstratos_geometricos/139=w1077-h1080.jpg',
+                'images/abstratos_geometricos/204=w929-h1080.jpg',
+                'images/abstratos_geometricos/132=w1073-h1080.jpg',
+                'images/abstratos_geometricos/171=w1920-h950.jpg',
+                'images/abstratos_geometricos/21=w1080-h723.jpg',
+                'images/abstratos_geometricos/118=w1646-h1080.jpg',
+                'images/abstratos_geometricos/124=w1840-h1080.jpg',
+                'images/abstratos_geometricos/0=w1920-h824.jpg',
+                'images/abstratos_geometricos/116=w1346-h1080.jpg',
+                'images/abstratos_geometricos/117=w1817-h1080.jpg',
+                'images/abstratos_geometricos/136=w1920-h931.jpg',
+                'images/abstratos_geometricos/107=w1920-h969.jpg',
+                'images/abstratos_geometricos/121=w1841-h1080.jpg',
+                'images/abstratos_geometricos/129=w1920-h949.jpg',
+                'images/ambientes_decorados/40=w1620-h1080.jpg',
+                'images/ambientes_decorados/185=w1454-h1080.jpg',
+                'images/ambientes_decorados/2=w1620-h1080.jpg',
+                'images/ambientes_decorados/113=w1440-h1080.jpg',
+                'images/ambientes_decorados/180=w1619-h1080.jpg',
+                'images/ambientes_decorados/199=w1080-h1080.jpg',
+                'images/ambientes_decorados/192=w720-h1080.jpg',
+                'images/ambientes_decorados/53=w1080-h1080.jpg',
+                'images/ambientes_decorados/22=w1920-h1080.jpg',
+                'images/ambientes_decorados/151=w1698-h1080.jpg',
+                'images/ambientes_decorados/51=w809-h1080.jpg',
+                'images/ambientes_decorados/35=w718-h1080.jpg',
+                'images/ambientes_decorados/42=w1117-h1080.jpg',
+                'images/ambientes_decorados/49=w1619-h1080.jpg',
+                'images/ambientes_decorados/13=w1080-h1920.jpg',
+                'images/ambientes_decorados/177=w878-h1080.jpg',
+                'images/ambientes_decorados/153=w864-h1080.jpg',
+                'images/ambientes_decorados/188=w715-h1080.jpg',
+                'images/ambientes_decorados/208=w1615-h1080.jpg',
+                'images/ambientes_decorados/37=w1623-h1080.jpg',
+                'images/ambientes_decorados/197=w720-h1080.jpg',
+                'images/ambientes_decorados/181=w1080-h1080.jpg',
+                'images/ambientes_decorados/36=w834-h1080.jpg',
+                'images/ambientes_decorados/190=w1006-h1080.jpg',
+                'images/ambientes_decorados/312=w1080-h1080.jpg',
+                'images/ambientes_decorados/92=w1512-h1080.jpg',
+                'images/ambientes_decorados/311=w750-h1000.jpg',
+                'images/ambientes_decorados/179=w1440-h1080.jpg',
+                'images/ambientes_decorados/1=w1078-h1080.jpg',
+                'images/ambientes_decorados/45=w1620-h1080.jpg'
+                ]
+                function GalleryItem(src) {
+                this.src = src;
+                this.el = document.createElement("div");
+                this.el.setAttribute("class","gallery-img");
+                this.elBg = document.createElement("div");
+                this.elBg.setAttribute("class","bg-img");
+                this.elBg.style.backgroundImage = "url('"+this.src+"')";
+                this.el.appendChild(this.elBg);
+                var temp = src.split("=").pop().split("-").map(v=>v.substring(1))
+                this.width = parseFloat(temp[0]);
+                this.height = parseFloat(temp[1]);
+                this.width = this.width/this.height*baseHeight;
+                this.height = baseHeight;
+                this.aspect = this.width/this.height;
+                var context = this;
+                this.setDimension = (width, height)=>{
+                    this.el.style.width = width+"px";
+                    this.el.style.height = height+"px";
+                }
+                this.setPosition = (x, y)=>{
+                    this.el.style.transform = "translate3d("+x+"px, "+y+"px, 0px)";
+                }
+                }
+                var gallery = document.querySelector(".gallery");
+                var baseWidth = gallery.clientWidth;
+                var baseHeight = 0.2*baseWidth; 
+                var maxItemsRow = 4;
+                var items = []
+                for (var i in images) {
+                var item = new GalleryItem(images[i]);
+                gallery.appendChild(item.el);
+                items.push(item);
+                }
+                var offset = 10;
+                var posY = 0;
+                for (var i=0; i<items.length; i++) {
+                var aspect = 0;
+                for (var j=i; j<items.length; j++) {
+                    aspect += items[j].width+offset;
+                    if (aspect>baseWidth || j==items.length-1 || j-i>=maxItemsRow) {
+                        aspect -= items[j].width+offset*2;
+                        if (j!=items.length-1)
+                        j--;
+                        else
+                        aspect += items[j].width+offset;
+                        console.log(i+" "+j+" "+aspect)
+                        var posX = 0;
+                        var aspectRatio = (baseWidth/aspect);
+                        for (var k=i; k<=j; k++) {
+                        items[k].setDimension(items[k].width*aspectRatio,baseHeight*aspectRatio)
+                        items[k].setPosition(posX*aspectRatio,posY)
+                        posX += items[k].width+offset;
+                        }
+                        posY += baseHeight*aspectRatio+offset;
+                        i=j;
+                        break;
+                    }
+                }
+                }
+
+                console.log(i+" "+j+" "+k+" "+aspect)
+
+
                 initInshot();
                 initparallax();
             });
