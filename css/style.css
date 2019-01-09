@@ -49,6 +49,12 @@ body{
 	color:#000;
 	font-family: 'Ek Mukta', sans-serif;
 }
+.show-only-mobile {
+	display: none;
+}
+.dont-show-mobile {
+	display: inline;
+}
 .image-popup {
 	cursor: pointer;
 }
@@ -111,7 +117,7 @@ body{
 /*--------------Typography--------------------------------------*/
 p {
     text-align: left;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 24px;
     padding-bottom: 10px;
 	font-weight:500;
@@ -1048,7 +1054,7 @@ footer.scroll-footer {
 section {
 	float:left;
 	width:100%;
-	padding:40px 0;
+	padding:20px 0;
 	position:relative;
 	z-index:2;
 	overflow:hidden;
@@ -2802,6 +2808,12 @@ header.main-header , footer.fixed-footer, footer.scroll-footer {
 }
 .error-wrap h1 {
 	font-size:90px;
+}
+.show-only-mobile {
+	display: inline;
+}
+.dont-show-mobile {
+	display: none;
 }
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {

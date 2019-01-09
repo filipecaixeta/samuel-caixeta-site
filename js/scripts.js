@@ -592,9 +592,9 @@ function createAlbum() {
         div.setAttribute("class","gallery-item "+ category);
         div.innerHTML = ''+
             '<div class="grid-item-holder">'+
-            // '    <a data-src="images/'+category+'/'+img+'" class="single-popup-image slider-zoom">'+
+            '    <a data-src="images/'+category+'/'+img+'" class="single-popup-image slider-zoom">'+
             '    <img  src="images/'+category+'_thumb/'+img+'" data-src="images/'+category+'/'+img+'" class="image-popup" alt="">'+
-            // '    <i class="fa fa-search"></i>'+
+            '    <i class="fa fa-search"></i>'+
             '    </a>'+
             '</div>';
         document.getElementById("gallery").appendChild(div);
