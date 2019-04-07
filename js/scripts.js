@@ -590,13 +590,17 @@ function createAlbum() {
     function createImage(category, img) {
         var div = document.createElement("div");
         div.setAttribute("class","gallery-item "+ category);
-        div.innerHTML = ''+
-            '<div class="grid-item-holder">'+
-            '    <a data-src="images/'+category+'/'+img+'" class="single-popup-image slider-zoom">'+
-            '    <img  src="images/'+category+'_thumb/'+img+'" data-src="images/'+category+'/'+img+'" class="image-popup" alt="">'+
-            '    <i class="fa fa-search"></i>'+
-            '    </a>'+
-            '</div>';
+        div.innerHTML = `+
+            <div class="grid-item-holder">
+                <a data-src="images/${category}/${img}" class="single-popup-image slider-zoom">
+                <img  src="images/${category}'_thumb/${img}" data-src="images/${category}/${img}" class="image-popup" alt="">
+                <i class="fa fa-search"></i>
+                <div class="thumb-info">
+                    <h3><a href="portfolio-single.html">Shutter Up</a></h3>
+                    <p>Here you can place an optional description of your  Project</p>
+                </div>
+                </a>
+            </div>`;
         document.getElementById("gallery").appendChild(div);
     }
     function Shuffle(o) {
