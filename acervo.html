@@ -34,56 +34,72 @@
             background-size: cover;
         }
 
-        /* The Modal (background) */
         .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 10; /* Sit on top */
-            /* padding-top: 100px; Location of the box */
+            display: none;
+            position: fixed;
+            z-index: 10;
             left: 0;
             top: 0;
-            width: 100vw; /* Full width */
-            height: 100vh; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+            width: 100vw;
+            height: 100vh;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.9);
+            grid-template-areas: "image caption";
+            grid-template-columns: 60vw 40vw;
         }
-        /* Modal Content (Image) */
         .modal-content {
+            grid-area: image;
+            overflow: hidden;
+        }
+        #modal-img-content {
             margin: auto;
             display: block;
-            /* width: 80vw; */
-            max-height: 100vh;
-            max-width: 100vw;
+            max-height: 100%;
+            max-width: 100%;
             position: relative;
             top: 50%;
             transform: translateY(-50%);
+            user-select: none;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            -o-user-select: none;
         }
-
-        /* Caption of Modal Image (Image Text) - Same Width as the Image */
-        #caption {
-            margin: auto;
-            display: block;
-            width: 80%;
-            max-width: 700px;
+        #modal-img-caption {
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-top: 100px;
+            grid-area: caption;
             text-align: center;
-            color: #ccc;
-            padding: 10px 0;
-            height: 150px;
-        }
+            color: white;
+            font-size: 20px;
+            overflow-y: scroll;
+            background: -moz-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 6%, rgba(0,0,0,0.3) 100%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0.3) 6%,rgba(0,0,0,0.3) 100%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,0.3) 6%,rgba(0,0,0,0.3) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#4d000000',GradientType=1 ); /* IE6-9 */
 
-        /* Add Animation - Zoom in the Modal */
-        /* .modal-content, #caption {
-            animation-name: zoom;
-            animation-duration: 0.6s;
         }
-
-        @keyframes zoom {
-            from {transform:scale(0)}
-            to {transform:scale(1)}
+        .content.column-filter-wrap {
+            padding-left: unset
         }
- */
-        /* The Close Button */
+        @media only screen and (max-width: 700px){
+            .modal {
+                grid-template-areas: "image"
+                                     "caption";
+                grid-template-columns: 100vw;
+                grid-template-rows: 80vh auto;
+                overflow-y: scroll;
+            }
+            #modal-img-caption {
+                padding-top: 10px;
+                overflow-y: unset;
+            }
+            .modal-content {
+                width: 100%;
+            }
+        }
         .close {
             z-index: 20;
             position: absolute;
@@ -93,6 +109,17 @@
             font-size: 40px;
             font-weight: bold;
             transition: 0.3s;
+            user-select: none;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            -o-user-select: none;
+            height: 22px;
+            text-align: center;
+            line-height: 22px;
+            border-radius: 7px;
+            width: 22px;
+            background: rgba(255,255,255,0.3);
         }
 
         .close:hover,
@@ -101,23 +128,27 @@
             text-decoration: none;
             cursor: pointer;
         }
-
-        /* 100% Image Width on Smaller Screens */
-        @media only screen and (max-width: 700px){
-            .modal-content {
-                width: 100%;
-            }
+        #photos {
+            position: fixed;
+            top: 100px;
+            bottom: 70px;
+            left: 0;
+            right: 0;
+            overflow-x: hidden;
+            overflow-y: scroll;
         }
     </style>
     </head>
     <body>
         <div id="image-modal" class="modal">
-            <!-- The Close Button -->
             <span class="close">&times;</span>
-            <!-- Modal Content (The Image) -->
-            <img class="modal-content" id="modal-img-content">
-            <!-- Modal Caption (Image Text) -->
-            <div id="modal-img-caption"></div>
+            <div class="modal-content">
+                <img id="modal-img-content">
+            </div>
+            <div id="modal-img-caption">Título: O descansar
+                Descrição: A vida passa depressa, o tempo passa depressa e as vezes imperceptivelmente nos tornamos reféns de um destino traçado com pressa, um destino que não nos pertence. Quem desafiaria as imposições do caótico mar rotineiro em que somos despejados? Nessa jornada, o descanso exige coragem, a dependência exige a mesma coragem; de maneira que as ondas não te assustem e delas se extraía apenas seu clássico som como em uma orquestra divinal. Mais do que um descanso físico, descansar sua alma em Deus, contemplar a maravilhosa criação e confiar no infalível planejamento do Criador é o oásis na aventura da vida. Ao confiar nessas promessas e não se apavorar em meio às consequências não define como impetuosa uma alma que descansa em meio ao caos, mas confirma a grandeza de um Pai bondoso e a extensão de sua doce e acessível graça.
+                Descrição: A vida passa depressa, o tempo passa depressa e as vezes imperceptivelmente nos tornamos reféns de um destino traçado com pressa, um destino que não nos pertence. Quem desafiaria as imposições do caótico mar rotineiro em que somos despejados? Nessa jornada, o descanso exige coragem, a dependência exige a mesma coragem; de maneira que as ondas não te assustem e delas se extraía apenas seu clássico som como em uma orquestra divinal. Mais do que um descanso físico, descansar sua alma em Deus, contemplar a maravilhosa criação e confiar no infalível planejamento do Criador é o oásis na aventura da vida. Ao confiar nessas promessas e não se apavorar em meio às consequências não define como impetuosa uma alma que descansa em meio ao caos, mas confirma a grandeza de um Pai bondoso e a extensão de sua doce e acessível graça.
+                Tamanho: 0.30x0.40</div>
         </div>
         <!-- loader -->
         <div class="spinner">
@@ -135,7 +166,7 @@
                         <li><a href="#"> <span>Email :</span> contato@samuelcaixeta.com.br</a></li>
                     </ul>
                 </div>
-                <a class="logo-holder" href="index.html"><img src="http://claudiocaixeta.com.br/images/logo-black.png" alt=""></a>
+                <a class="logo-holder" href="index.html"><img src="images/signature.jpeg" alt=""></a>
                 <!-- mobile nav --> 
                 <div class="nav-button-wrap">
                     <div class="nav-button vis-main-menu"><span></span><span></span><span></span></div>
@@ -165,34 +196,25 @@
             <!-- The Modal -->
             <!-- header  end -->
             <!--=============== wrapper ===============-->
-            <div id="wrapper" class="fullsceen-wrap">
+            <div id="photos">
+            <!-- <div id="wrapper" class="fullsceen-wrap"> -->
                 <!--Content -->
-                <div class="content column-filter-wrap">
+                <!-- <div class="content column-filter-wrap"> -->
                     <!--  filter -->    
-                    <div class="column-filter">
-                        <div class="filter-button">Filter : </div>
-                        <div class="gallery-filters fl-wrap alt">
-                            <a href="#" class="gallery-filter  gallery-filter-active" data-filter="*">Todos</a>
-                            <a href="#" class="gallery-filter" data-filter=".abstratos_geometricos">Abstratos geométricos</a>
-                            <a href="#" class="gallery-filter" data-filter=".esculturas_coloridas">Esculturas coloridas</a>
-                            <a href="#" class="gallery-filter" data-filter=".esculturas_de_parede">Esculturas de parede</a>
-                            <a href="#" class="gallery-filter" data-filter=".esculturas_aco_corten_ferrugem">Esculturas no aço corte ferrugem</a>
-                            <a href="#" class="gallery-filter" data-filter=".ambientes_decorados">Ambientes decorados</a> 
-                            <a href="#" class="gallery-filter" data-filter=".atelie">Atelie</a>      
-                        </div>
-                    </div>
+                    
                     <!--  filter end --> 
                     <!--  gallery-items -->
                     <div class="gallery gallery-items hid-det-items">
                     </div>
                     <!-- <div id="gallery" class="gallery-items hid-det-items">                          
                     </div> -->
-                </div>
+                <!-- </div> -->
                 <!-- content  end -->  
             </div>
+            <!-- </div> -->
             <!-- wrapper end -->
             <!--search-form-holder -->  
-            <div class="search-form-holder fixed-search">
+            <!-- <div class="search-form-holder fixed-search">
                 <div class="search-form-bg"></div>
                 <div class="search-form-wrap">
                     <div class="container">
@@ -202,7 +224,7 @@
                         <div class="close-fixed-search"></div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!--search-form-holder  end--> 
             <!-- footer -->
             <footer class="fixed-footer">
@@ -223,133 +245,7 @@
         <script type="text/javascript" src="js/scripts.js"></script>
         <script>
             $(function () {
-                // createAlbum();
-
-
-                // <div class="grid-item-holder">
-                //     <a data-src="images/${category}/${img}" class="single-popup-image slider-zoom">
-                //     <img  src="images/${category}'_thumb/${img}" data-src="images/${category}/${img}" class="image-popup" alt="">
-                //     <i class="fa fa-search"></i>
-                //     <div class="thumb-info">
-                //         <h3><a href="portfolio-single.html">Shutter Up</a></h3>
-                //         <p>Here you can place an optional description of your  Project</p>
-                //     </div>
-                //     </a>
-                // </div>`;
-
                 var images = [
-                // 'images/esculturas_de_parede/94=w1440-h1080.jpg',
-                // 'images/esculturas_de_parede/91=w1440-h1080.jpg',
-                // 'images/esculturas_de_parede/90=w1080-h1440.jpg',
-                // 'images/esculturas_coloridas/210=w720-h1080.jpg',
-                // 'images/esculturas_coloridas/4=w1080-h1920.jpg',
-                // 'images/esculturas_coloridas/25=w1080-h1920.jpg',
-                // 'images/esculturas_coloridas/56=w1080-h1080.jpg',
-                // 'images/esculturas_coloridas/100=w1080-h1440.jpg',
-                // 'images/esculturas_coloridas/6=w1080-h1920.jpg',
-                // 'images/esculturas_coloridas/95=w810-h1080.jpg',
-                // 'images/esculturas_coloridas/70=w807-h1080.jpg',
-                // 'images/esculturas_coloridas/145=w1080-h1080.jpg',
-                // 'images/esculturas_coloridas/14=w608-h1080.jpg',
-                // 'images/esculturas_coloridas/27=w1080-h1920.jpg',
-                // 'images/esculturas_coloridas/169=w720-h1080.jpg',
-                // 'images/esculturas_coloridas/157=w720-h1080.jpg',
-                // 'images/esculturas_coloridas/167=w720-h1080.jpg',
-                // 'images/esculturas_coloridas/123=w450-h1080.jpg',
-                // 'images/esculturas_coloridas/15=w1080-h1920.jpg',
-                // 'images/esculturas_coloridas/83=w536-h1080.jpg',
-                // 'images/esculturas_coloridas/168=w720-h1080.jpg',
-                // 'images/home/4=w564-h846.jpg',
-                // 'images/home/2=w550-h734.jpg',
-                // 'images/home/1=w564-h848.jpg',
-                // 'images/home/3=w954-h1024.jpg',
-                // 'images/bg_paisagem/10=w1821-h1080.jpg',
-                // 'images/bg_paisagem/94=w1440-h1080.jpg',
-                // 'images/bg_paisagem/19=w1920-h932.jpg',
-                // 'images/bg_paisagem/136=w1920-h931.jpg',
-                // 'images/bg_paisagem/107=w1920-h969.jpg',
-                // 'images/atelie/316=w1668-h2968.jpg',
-                // 'images/atelie/318=w3092-h3029.jpg',
-                // 'images/atelie/313=w2968-h1668.jpg',
-                // 'images/atelie/312=w2988-h5312.jpg',
-                // 'images/atelie/315=w3264-h2448.jpg',
-                // 'images/atelie/314=w3264-h2448.jpg',
-                // 'images/atelie/317=w960-h1280.jpg',
-                // 'images/atelie/122=w864-h1080.jpg',
-                // 'images/esculturas_aco_corten_ferrugem/164=w720-h1080.jpg',
-                // 'images/esculturas_aco_corten_ferrugem/82=w439-h1080.jpg',
-                // 'images/esculturas_aco_corten_ferrugem/104=w763-h1080.jpg',
-                // 'images/esculturas_aco_corten_ferrugem/97=w810-h1080.jpg',
-                // 'images/esculturas_aco_corten_ferrugem/134=w810-h1080.jpg',
-                // 'images/esculturas_aco_corten_ferrugem/162=w720-h1080.jpg',
-                // 'images/esculturas_aco_corten_ferrugem/122=w864-h1080.jpg',
-                // 'images/abstratos_geometricos/10=w1821-h1080.jpg',
-                // 'images/abstratos_geometricos/203=w1789-h1080.jpg',
-                // 'images/abstratos_geometricos/130=w1920-h1004.jpg',
-                // 'images/abstratos_geometricos/205=w989-h1080.jpg',
-                // 'images/abstratos_geometricos/20=w1920-h1010.jpg',
-                // 'images/abstratos_geometricos/119=w1920-h943.jpg',
-                // 'images/abstratos_geometricos/55=w1609-h1080.jpg',
-                // 'images/abstratos_geometricos/77=w1920-h963.jpg',
-                // 'images/abstratos_geometricos/202=w1674-h1080.jpg',
-                // 'images/abstratos_geometricos/302=w960-h640.jpg',
-                // 'images/abstratos_geometricos/59=w1687-h1080.jpg',
-                // 'images/abstratos_geometricos/138=w1070-h1080.jpg',
-                // 'images/abstratos_geometricos/73=w819-h1080.jpg',
-                // 'images/abstratos_geometricos/72=w1920-h951.jpg',
-                // 'images/abstratos_geometricos/131=w1057-h1080.jpg',
-                // 'images/abstratos_geometricos/125=w1920-h1069.jpg',
-                // 'images/abstratos_geometricos/19=w1920-h932.jpg',
-                // 'images/abstratos_geometricos/66=w1920-h922.jpg',
-                // 'images/abstratos_geometricos/120=w743-h1080.jpg',
-                // 'images/abstratos_geometricos/301=w2276-h2051.jpg',
-                // 'images/abstratos_geometricos/78=w856-h1080.jpg',
-                // 'images/abstratos_geometricos/300=w2271-h2050.jpg',
-                // 'images/abstratos_geometricos/206=w1920-h937.jpg',
-                // 'images/abstratos_geometricos/139=w1077-h1080.jpg',
-                // 'images/abstratos_geometricos/204=w929-h1080.jpg',
-                // 'images/abstratos_geometricos/132=w1073-h1080.jpg',
-                // 'images/abstratos_geometricos/171=w1920-h950.jpg',
-                // 'images/abstratos_geometricos/21=w1080-h723.jpg',
-                // 'images/abstratos_geometricos/118=w1646-h1080.jpg',
-                // 'images/abstratos_geometricos/124=w1840-h1080.jpg',
-                // 'images/abstratos_geometricos/0=w1920-h824.jpg',
-                // 'images/abstratos_geometricos/116=w1346-h1080.jpg',
-                // 'images/abstratos_geometricos/117=w1817-h1080.jpg',
-                // 'images/abstratos_geometricos/136=w1920-h931.jpg',
-                // 'images/abstratos_geometricos/107=w1920-h969.jpg',
-                // 'images/abstratos_geometricos/121=w1841-h1080.jpg',
-                // 'images/abstratos_geometricos/129=w1920-h949.jpg',
-                // 'images/ambientes_decorados/40=w1620-h1080.jpg',
-                // 'images/ambientes_decorados/185=w1454-h1080.jpg',
-                // 'images/ambientes_decorados/2=w1620-h1080.jpg',
-                // 'images/ambientes_decorados/113=w1440-h1080.jpg',
-                // 'images/ambientes_decorados/180=w1619-h1080.jpg',
-                // 'images/ambientes_decorados/199=w1080-h1080.jpg',
-                // 'images/ambientes_decorados/192=w720-h1080.jpg',
-                // 'images/ambientes_decorados/53=w1080-h1080.jpg',
-                // 'images/ambientes_decorados/22=w1920-h1080.jpg',
-                // 'images/ambientes_decorados/151=w1698-h1080.jpg',
-                // 'images/ambientes_decorados/51=w809-h1080.jpg',
-                // 'images/ambientes_decorados/35=w718-h1080.jpg',
-                // 'images/ambientes_decorados/42=w1117-h1080.jpg',
-                // 'images/ambientes_decorados/49=w1619-h1080.jpg',
-                // 'images/ambientes_decorados/13=w1080-h1920.jpg',
-                // 'images/ambientes_decorados/177=w878-h1080.jpg',
-                // 'images/ambientes_decorados/153=w864-h1080.jpg',
-                // 'images/ambientes_decorados/188=w715-h1080.jpg',
-                // 'images/ambientes_decorados/208=w1615-h1080.jpg',
-                // 'images/ambientes_decorados/37=w1623-h1080.jpg',
-                // 'images/ambientes_decorados/197=w720-h1080.jpg',
-                // 'images/ambientes_decorados/181=w1080-h1080.jpg',
-                // 'images/ambientes_decorados/36=w834-h1080.jpg',
-                // 'images/ambientes_decorados/190=w1006-h1080.jpg',
-                // 'images/ambientes_decorados/312=w1080-h1080.jpg',
-                // 'images/ambientes_decorados/92=w1512-h1080.jpg',
-                // 'images/ambientes_decorados/311=w750-h1000.jpg',
-                // 'images/ambientes_decorados/179=w1440-h1080.jpg',
-                // 'images/ambientes_decorados/1=w1078-h1080.jpg',
-                // 'images/ambientes_decorados/45=w1620-h1080.jpg'
                 'images/fotos/1_thumb=w425-h418.jpg',
                 'images/fotos/2_thumb=w327-h418.jpg',
                 'images/fotos/3_thumb=w513-h418.jpg',
@@ -397,6 +293,23 @@
                 'images/fotos/45_thumb=w417-h418.jpg',
                 ]
                 
+                var image_caption = {
+                    'images/fotos/1_thumb=w425-h418.jpg': `
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in elit id sem consectetur gravida. Nunc id maximus metus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam est libero, pulvinar at feugiat eget, sagittis quis ex. Donec viverra orci a sagittis interdum. Etiam justo risus, pellentesque at metus id, fermentum interdum urna. Aliquam erat volutpat. Donec a arcu ipsum. Phasellus ut pretium sapien. Vivamus facilisis blandit orci, quis lobortis magna aliquam sed. Nullam ac ornare ex, eu tristique diam.
+                    <br>
+                    Aliquam ac diam vehicula, venenatis ipsum quis, laoreet augue. Vestibulum imperdiet gravida lectus, ac lacinia purus facilisis bibendum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi porttitor quam sit amet porttitor dignissim. Fusce erat tortor, varius eu aliquam nec, interdum eu ligula. Fusce maximus, dui a lobortis bibendum, nibh augue rhoncus ante, vitae bibendum nisl ipsum eget nulla. Aenean id turpis in erat fringilla fringilla ac sed justo. Curabitur eget pharetra nisi. Proin et dapibus nibh. Nulla elementum malesuada urna molestie placerat. Sed gravida leo dui, accumsan efficitur nunc euismod a. Duis vitae sapien vel elit porta pulvinar.
+                    <br>
+                    Suspendisse ut dolor augue. Pellentesque gravida tortor eu cursus mattis. Donec sed luctus massa. Sed congue vitae nunc quis porta. Maecenas eget urna arcu. Praesent vel sodales eros, ac ultrices metus. Sed hendrerit pellentesque massa, ut consequat sapien scelerisque in. Praesent tellus sem, venenatis in nisl eu, ullamcorper accumsan ante. Ut tincidunt lobortis sagittis.
+                    `,
+                    'images/fotos/2_thumb=w327-h418.jpg': `
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in elit id sem consectetur gravida. Nunc id maximus metus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam est libero, pulvinar at feugiat eget, sagittis quis ex. Donec viverra orci a sagittis interdum. Etiam justo risus, pellentesque at metus id, fermentum interdum urna. Aliquam erat volutpat. Donec a arcu ipsum. Phasellus ut pretium sapien. Vivamus facilisis blandit orci, quis lobortis magna aliquam sed. Nullam ac ornare ex, eu tristique diam.
+                    <br>
+                    Aliquam ac diam vehicula, venenatis ipsum quis, laoreet augue. Vestibulum imperdiet gravida lectus, ac lacinia purus facilisis bibendum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi porttitor quam sit amet porttitor dignissim. Fusce erat tortor, varius eu aliquam nec, interdum eu ligula. Fusce maximus, dui a lobortis bibendum, nibh augue rhoncus ante, vitae bibendum nisl ipsum eget nulla. Aenean id turpis in erat fringilla fringilla ac sed justo. Curabitur eget pharetra nisi. Proin et dapibus nibh. Nulla elementum malesuada urna molestie placerat. Sed gravida leo dui, accumsan efficitur nunc euismod a. Duis vitae sapien vel elit porta pulvinar.
+                    `
+                }
+
+                var main = document.getElementById('main')
+
                 // Get the modal
                 var modal = document.getElementById('image-modal')
 
@@ -412,6 +325,7 @@
                 span.onclick = function() {
                     modal.style.display = "none"
                     modalImg.src = ''
+                    main.style['overflow-y'] = 'scroll'
                     modalCaption.innerHTML = ''
                 } 
 
@@ -420,10 +334,12 @@
                     this.el = document.createElement("div");
                     this.el.setAttribute("class","gallery-img");
                     this.el.onclick = (event)=>{
-                        var bigImage = /url\("(.*?)\"\)/.exec(event.target.style['background-image'])[1].replace(/thumb\=w\d+\-h\d+/,'big')
-                        modal.style.display = "block"
+                        var thumbImage = /url\("(.*?)\"\)/.exec(event.target.style['background-image'])[1]
+                        var bigImage = thumbImage.replace(/thumb\=w\d+\-h\d+/,'big')
+                        modal.style.display = "grid"
                         modalImg.src = bigImage
-                        modalCaption.innerHTML = ''
+                        main.style['overflow-y'] = 'hidden'
+                        modalCaption.innerHTML = image_caption[thumbImage] || ''
                     }
                     this.elBg = document.createElement("div");
                     this.elBg.setAttribute("class","bg-img");

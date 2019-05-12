@@ -298,16 +298,17 @@ header.main-header {
 }
 .logo-holder{
 	position:absolute;
-	top:16px;
+	/* top:16px; */
 	left:50%;
 	margin-left:-60px;
 	width:120px;
-	height:60px;
+	/* height:60px; */
+	height: 100%;
 	padding-top:18px;
 }
 .logo-holder img {
 	width:auto;
-	height:24px;
+	height: 100%;
 }
 .header-contacts {
 	float:left;
@@ -2619,7 +2620,7 @@ section.parallax-section .overlay {
 
 @media only screen and  (max-width: 1284px) {
 .logo-holder {
-    top: 9px;
+    /* top: 9px; */
     left: 50px;
     margin-left: 0;
 }
